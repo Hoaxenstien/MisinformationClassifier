@@ -5,13 +5,7 @@ pipeline_results.csv        Output: metrics table (auto-generated)
 figures/                    Output: all 6 figures (auto-generated)
 README.txt                  
 
------------
-REQUIREMENTS
------------
-Python 3.9 or higher (developed and tested on Python 3.11)
-No obscure packages — all are available via pip.
-
-Required libraries:
+libraries:
   pandas
   numpy
   matplotlib
@@ -19,49 +13,27 @@ Required libraries:
   scikit-learn
   nltk
 
------------
-INSTALLATION
------------
-Install all dependencies with one command:
 
-    pip install pandas numpy matplotlib seaborn scikit-learn nltk
+Install all dependencies with one command: 
+pip install pandas numpy matplotlib seaborn scikit-learn nltk
 
-On some Linux systems you may need:
+If given an error
+>>> import nltk
+>>> nltk.download('stopwords')
+run command: python -m nltk.downloader stopwords
 
-    pip install pandas numpy matplotlib seaborn scikit-learn nltk --break-system-packages
+Then run the python file
 
------------
-RUNNING THE CODE
------------
-1. Ensure fake_or_real_news.csv is in the same directory as naive_bayes_classifier.py
+Data Set:
 
-2. Run the script:
-
-    python naive_bayes_classifier.py
-
-   (or: python3 naive_bayes_classifier.py)
-
-3. The script will automatically:
-   - Download required NLTK resources (stopwords) on first run
-   - Train and evaluate 6 pipeline variants
-   - Print a metrics summary table to the console
-   - Save 6 figures to the figures/ subdirectory
-   - Save pipeline_results.csv
-
-Expected runtime: ~30-60 seconds on a modern laptop.
-
------------
-DATASET
------------
 Source: Lutz Hamel (2021). "Fake or Real News Dataset."
         https://github.com/lutzhamel/fake-news
 
 6,335 labeled news articles (3,164 FAKE, 3,171 REAL).
 The CSV must contain columns: id, title, text, label
 
------------
-OUTPUT FIGURES
------------
+Output: 
+
 fig1_f1_comparison.png      F1 score horizontal bar chart by pipeline
 fig2_confusion_matrix.png   Confusion matrix for best model
 fig3_roc_curves.png         ROC curves with AUC for all pipelines
