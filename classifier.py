@@ -1,7 +1,3 @@
-# Misinformation Classifier using Naive Bayes
-# Trains and evaluates 6 preprocessing pipelines on fake_or_real_news.csv
-# Outputs a metrics table, 6 figures, and pipeline_results.csv
-
 import os
 import warnings
 import pandas as pd
@@ -138,7 +134,7 @@ for name, pipe in pipelines.items():
     rec  = recall_score(y_test, yPred)
     f1   = f1_score(y_test, yPred)
 
-    # 5-fold cross validation on training set
+    # 5 fold cross validation on training set
     cvScores = cross_val_score(pipe, X_train, y_train, cv=5, scoring='f1')
 
     results.append({
@@ -213,12 +209,12 @@ plt.savefig('figures/fig3_roc_curves.png', dpi=150)
 plt.close()
 print("Saved figures/fig3_roc_curves.png")
 
-# fig 4: top predictive features for FAKE and REAL
+# fig 4: top predictive features for fake and real
 vec = bestPipe.named_steps['vec']
 clf = bestPipe.named_steps['clf']
 featureNames = np.array(vec.get_feature_names_out())
 
-# higher log prob = more predictive of that class (0=FAKE, 1=REAL)
+# higher log prob = more predictive of that class (0=fake, 1=real)
 logProbs = clf.feature_log_prob_
 fakeTopIdx = np.argsort(logProbs[0])[-20:][::-1]
 realTopIdx = np.argsort(logProbs[1])[-20:][::-1]
