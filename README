@@ -21,16 +21,14 @@ If given an error
 >>> import nltk
 >>> nltk.download('stopwords')
 run command: python -m nltk.downloader stopwords
-
 Then run the python file
 
 Data Set:
 
 Source: Lutz Hamel (2021). "Fake or Real News Dataset."
         https://github.com/lutzhamel/fake-news
+6,335 labeled news articles (3,164 fake, 3,171 real).
 
-6,335 labeled news articles (3,164 FAKE, 3,171 REAL).
-The CSV must contain columns: id, title, text, label
 
 Output: 
 
